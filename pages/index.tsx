@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../app/globals.css";
 export default function Home() {
   const [chats, setChat]: any = useState([])
   const [msg, setMsg] = useState("")
   const [loading, setLoading] = useState(false)
   const scrollTop:any = useRef() 
+  const input:any = useRef() 
   const sendMessage = () => {
     if (msg && !loading) {
       setLoading(true)
@@ -19,6 +20,7 @@ export default function Home() {
   const scV = ()=>{
     setTimeout(() => {
       scrollTop.current?.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+      input.current.focus()
     }, 200);
   }
   const getAiResponse = async (m:any) => { 
@@ -54,6 +56,12 @@ export default function Home() {
     formattedHtml += '</ul>';
     return formattedHtml;
   };
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      input.current.focus()
+    },400)
+  },[])
   
   return (
     <div className="chat-container">
@@ -79,7 +87,7 @@ export default function Home() {
 
       </div>
       <div className="chat-input">
-        <input value={msg} type="text" disabled={loading} placeholder="Type a message..." onChange={(e) => setMsg(e.target.value)} onKeyDown={(e) => { if (e.keyCode == 13) { sendMessage() } }} />
+        <input value={msg} type="text" ref={input} disabled={loading} placeholder="Type a message..." onChange={(e) => setMsg(e.target.value)} onKeyDown={(e) => { if (e.keyCode == 13) { sendMessage() } }} />
         <button onClick={sendMessage} disabled={loading}>Send</button>
       </div>
     </div>
