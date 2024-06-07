@@ -37,8 +37,8 @@ body, body>div {
 }
 .chat-message {
   margin-bottom: 10px;
-  display: flex;
-  align-items: flex-start;
+  /* display: flex;
+  align-items: flex-start; */
 }
 .chat-message .message {
   max-width: 60%;
