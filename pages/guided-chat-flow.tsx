@@ -5,12 +5,16 @@ export default function Home() {
   const [chats, setChat]: any = useState([])
   const [msg, setMsg] = useState({ id: "", message: "" })
   const [loading, setLoading] = useState(false)
+  const [selectedOption, setSelectedOption]:any=useState([])
   const scrollTop: any = useRef()
   // const input:any = useRef() 
   const sendMessage = () => {
     if (msg.id && !loading) {
       setLoading(true)
       const nr = [...chats, { "role": "user", "content": msg }]
+      if(!Boolean(msg.id === "yes" || msg.id === "no")){
+        setSelectedOption((s:any)=>([...s, msg.id]))
+      }
       setChat([...nr])
       getAiResponse(nr, "choose")
       scV()
@@ -72,7 +76,7 @@ export default function Home() {
   useEffect(() => {
     getAiResponse(chats, "start")
   }, [])
-  console.log("chatRes0", chats)
+  console.log("selectedOption", selectedOption, chats)
   return (
     <div className="chat-container">
       <div className="chat-header">
@@ -95,7 +99,7 @@ export default function Home() {
                   {Boolean(el.content.optionTitle) && <p>{el.content.optionTitle}</p>}
                   <ul>
                     {el.content.options.map((el: any) => (<li>
-                      {i == s.length - 1
+                      {(i == s.length - 1) && !Boolean(selectedOption.includes(el.id))
                         ?
                         <button style={{ margin: 5 }} onClick={() => setMessage(el)}>{el.option}</button>
                         :
