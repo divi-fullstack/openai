@@ -98,7 +98,7 @@ export default function Home() {
                 && <div className="message">
                   {Boolean(el.content.optionTitle) && <p>{el.content.optionTitle}</p>}
                   <ul>
-                    {el.content.options.map((el: any) => (<li>
+                    {el.content.options.map((el: any, k:number) => (<li key={`op-${k}`}>
                       {(i == s.length - 1) && !Boolean(selectedOption.includes(el.id))
                         ?
                         <button style={{ margin: 5 }} onClick={() => setMessage(el)}>{el.option}</button>
