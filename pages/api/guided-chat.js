@@ -5,15 +5,15 @@ export default async function handler(req, res) {
             "terms": {
                 "1": {
                     "name": "Floor Rise",
-                    "explanation": "Floor Rise refers to the additional cost per square foot for apartments located on higher floors. This cost is added because higher floors often provide better views and are less noisy. For example if an apartment on the 10th floor costs more per square foot than one on the 1st floor that's due to Floor Rise."
+                    "explanation": "Floor Rise refers to the additional cost per square foot for apartments located on higher floors. This cost is added because higher floors often provide better views and are less noisy. For example, if an apartment on the 10th floor costs more per square foot than one on the 1st floor, that's due to Floor Rise."
                 },
                 "2": {
                     "name": "LTV (Loan to Value)",
-                    "explanation": "LTV stands for Loan to Value. It is a ratio used by lenders to express the ratio of a loan to the value of the asset purchased. For example if you're buying a home worth ₹5000000 and you take out a ₹4000000 loan the LTV ratio is 80%. Higher LTV ratios mean higher risk for the lender."
+                    "explanation": "LTV stands for Loan to Value. It is a ratio used by lenders to express the ratio of a loan to the value of the asset purchased. For example, if you're buying a home worth ₹5,000,000 and you take out a ₹4,000,000 loan, the LTV ratio is 80%. Higher LTV ratios mean higher risk for the lender."
                 },
                 "3": {
                     "name": "EMI (Equated Monthly Installment)",
-                    "explanation": "EMI stands for Equated Monthly Installment. It is the amount you pay every month towards your loan. The EMI includes both the principal amount and the interest. It is calculated based on the loan amount interest rate and tenure."
+                    "explanation": "EMI stands for Equated Monthly Installment. It is the amount you pay every month towards your loan. The EMI includes both the principal amount and the interest. It is calculated based on the loan amount, interest rate, and tenure."
                 },
                 "4": {
                     "name": "FSI (Floor Space Index)",
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
                 },
                 "5": {
                     "name": "Carpet Area",
-                    "explanation": "Carpet Area is the actual usable area of an apartment or house excluding the thickness of the inner walls. Simply put it's the area where you can lay a carpet. This is different from the built-up area or super built-up area which include additional spaces like balconies and common areas."
+                    "explanation": "Carpet Area is the actual usable area of an apartment or house excluding the thickness of the inner walls. Simply put, it's the area where you can lay a carpet. This is different from the built-up area or super built-up area which includes additional spaces like balconies and common areas."
                 },
                 "6": {
                     "name": "Rental Yield",
@@ -41,23 +41,23 @@ export default async function handler(req, res) {
                 }
             }
         };
-
+        
         const knowMore = [
             "Would you like to know about another term?",
             "Would you like to explore another term?",
             "Would you like information on another term?",
             "Any other term you'd like to know about?",
             "Do you need information on another term?",
-            "Intrested in any other terms?",
-
+            "Interested in any other terms?"
         ]
-
+        
         const selectionPrefix = [
             "",
             "Great choice!",
             "Sure!",
             "Absolutely!"
         ]
+        
 
         function getRandomStringFromArray(arr) {
             if (!Array.isArray(arr) || arr.length === 0) {
