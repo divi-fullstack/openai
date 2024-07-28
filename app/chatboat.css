@@ -1,0 +1,146 @@
+.body {
+    background-color: antiquewhite;
+    width: 100%;
+    min-height: 100vh;
+    padding: 5vw;
+}
+
+/* .chat-size {
+    width: 40%;
+    margin: 0 auto;
+    background: #fff;
+} */
+
+.chat_boat {
+    padding: 2vw;
+    background: #F6F6F6;
+    position: relative;
+}
+
+.chat_boat-head {
+    padding: 1vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(2px);
+    background: #f6f6f683;
+}
+
+.chat_back-btn {
+    width: clamp(1rem, 2.5vw, 3rem);
+}
+
+.chat_back-btn img {
+    width: 100vw;
+}
+
+.chat_body {
+    padding: 1vw 0;
+    height: 80vh;
+    overflow-y: auto;
+    padding-top: 5vw;
+}
+
+.massage-box {
+    padding: 1vw 0;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+
+}
+
+.send {
+    margin-left: auto;
+}
+
+.send .massage {
+    background: var(--color-red);
+    color: var(--color-white);
+}
+
+.recieved {
+    width: 90%;
+    margin-right: auto;
+}
+
+.massage {
+    width: 100%;
+    padding: 1vw;
+    border-radius: .75vw;
+    box-shadow: 0px 0px 10px 0px #0000001A;
+    background: var(--color-white);
+}
+
+.chat_img {
+    width: clamp(3rem, 5vw, 5vw);
+    height: clamp(3rem, 5vw, 5vw);
+    border-radius: 50%;
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chat_img img {
+    width: 50%;
+    max-width: unset;
+}
+
+/* .massage-box.recieved:nth-child(1) {
+    display: block;
+} */
+
+.chat_input-box {
+    width: 100%;
+    position: relative;
+}
+
+.chat_input {
+    width: 100%;
+    border-radius: 5rem;
+    border: 1px solid var(--color-red);
+    padding: 1rem 3rem 1rem 1rem;
+    outline: none;
+}
+
+.send-btn {
+    position: absolute;
+    right: 14px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat_onlyImg {
+    width: 30%;
+}
+
+.chat_body::-webkit-scrollbar {
+    width: 10px;
+    /* or any desired width */
+}
+
+/* Track (background) of the scrollbar */
+.chat_body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* or any desired color */
+}
+
+/* Thumb (the draggable part) of the scrollbar */
+.chat_body::-webkit-scrollbar-thumb {
+    background: #888;
+    /* or any desired color */
+    border-radius: 5px;
+    /* Optional: to make the edges rounded */
+}
+
+/* Thumb on hover */
+.chat_body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* or any desired color on hover */
+}

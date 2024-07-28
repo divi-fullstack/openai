@@ -86,3 +86,12 @@ ul {
 p{
   margin: 0;
 }
+.text-danger{
+  color: #ff0000;
+}
+.text-sm{
+  font-size: 14px;
+}
+.position-absolute{
+  position: absolute;
+}

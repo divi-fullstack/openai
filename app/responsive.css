@@ -1,0 +1,83 @@
+@media (max-width: 992px) {
+    .section-top {
+        display: none;
+    }
+
+
+
+
+    .footer_bottom {
+        display: none;
+    }
+
+    .mob-view {
+        display: block;
+    }
+
+    .web-view {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        background: #00000044;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .humberger_menu_icon {
+        display: block;
+    }
+
+    .banner-content {
+        display: none;
+    }
+
+    .need {
+        padding: 5vw 1vw;
+    }
+
+    .footer-card {
+        width: 58vw;
+    }
+
+    .banner-img {
+        display: none;
+    }
+
+    .banner-img.banner-mob {
+        display: block;
+    }
+
+    .banner-content-mob {
+        display: block;
+    }
+
+    .logo {
+        width: 10vw;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer-card {
+        width: 90vw;
+    }
+
+    .social_links {
+        height: 5vw;
+        width: 5vw;
+
+    }
+
+    img.social_icon {
+        width: 2vw;
+    }
+
+    .logo {
+        width: 15vw;
+    }
+}
