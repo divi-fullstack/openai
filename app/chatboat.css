@@ -173,13 +173,13 @@
     margin-left: auto;
 }
 
-.massage-box.recieved .chat_img {
+/* .massage-box.recieved .chat_img {
     display: none;
 }
 
 .massage-box.recieved:nth-child(1) .chat_img {
     display: flex;
-}
+} */
 
 .send .massage:nth-child(1) {
     margin-top: 20px;
