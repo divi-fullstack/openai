@@ -15,20 +15,23 @@
     padding: 2vw;
     background: #F6F6F6;
     position: relative;
+    background: url(../public/images/chat-bg.jpg) 100% center;
 }
 
 .chat_boat-head {
-    padding: 1vw;
+    padding: 1rem 1.5rem;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     backdrop-filter: blur(2px);
     background: #f6f6f683;
+    box-shadow: 0vw 7vw 4vw 0vw #ffffff;
 }
 
 .chat_back-btn {
     width: clamp(1rem, 2.5vw, 3rem);
+    cursor: pointer;
 }
 
 .chat_back-btn img {
@@ -39,7 +42,7 @@
     padding: 1vw 0;
     height: 80vh;
     overflow-y: auto;
-    padding-top: 5vw;
+    padding-top: 3rem;
 }
 
 .massage-box {
@@ -60,6 +63,7 @@
     color: var(--color-white);
 }
 
+
 .recieved {
     width: 90%;
     margin-right: auto;
@@ -67,10 +71,11 @@
 
 .massage {
     width: 100%;
-    padding: 1vw;
-    border-radius: .75vw;
+    padding: 20px;
+    border-radius: .75rem;
     box-shadow: 0px 0px 10px 0px #0000001A;
     background: var(--color-white);
+    text-align: left;
 }
 
 .chat_img {
@@ -122,6 +127,7 @@
 
 .chat_body::-webkit-scrollbar {
     width: 10px;
+    display: none;
     /* or any desired width */
 }
 
@@ -143,4 +149,38 @@
 .chat_body::-webkit-scrollbar-thumb:hover {
     background: #555;
     /* or any desired color on hover */
+}
+
+.guided-btns {
+    padding: 1.4vw 0;
+}
+
+.guided-btns li {
+    padding: 0.3vw 0;
+}
+
+.guided-btns li button {
+    padding: 8px 10px;
+    background: #fff;
+    border-radius: 0.6rem;
+    color: #850C70;
+    border: 0.1vw solid #850C70;
+    text-align: left;
+}
+
+.recieved .massage {
+    width: calc(100% - clamp(4rem, 6vw, 6vw));
+    margin-left: auto;
+}
+
+.massage-box.recieved .chat_img {
+    display: none;
+}
+
+.massage-box.recieved:nth-child(1) .chat_img {
+    display: flex;
+}
+
+.send .massage:nth-child(1) {
+    margin-top: 20px;
 }
