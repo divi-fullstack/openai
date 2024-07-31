@@ -167,6 +167,16 @@ console.log(messages,'kkkkkkk')
   }
   return (
     <>
+     <img src="/stickers/bye.png" hidden={true} />
+     <img src="/stickers/great_question.png" hidden={true} />
+     <img src="/stickers/happy_home_buying.png" hidden={true} />
+     <img src="/stickers/here_you_go.png" hidden={true} />
+     <img src="/stickers/hi.png" hidden={true} />
+     <img src="/stickers/hope_that_helped.png" hidden={true} />
+     <img src="/stickers/let_me_think.png" hidden={true} />
+     <img src="/stickers/oops.png" hidden={true} />
+     <img src="/stickers/wait.png" hidden={true} />
+
       <Head>
         <meta
           name="viewport"
