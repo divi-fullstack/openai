@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import socket from "../lib/socket";
 import { generateRandomId, getSearchParam } from "../lib/helper";
 import "../app/globals.css";
@@ -21,13 +21,13 @@ export default function Home() {
   const setMessage = (m: any) => {
     setError("");
     m.sender = "user";
-    if (!m?.refFrom) { 
+    if (!m?.refFrom) {
       m.refFrom = messages?.[messages?.length - 2]?.refFrom || null
     }
     setMsg(m);
     // console.log(m, 'ssssss')
   };
-
+console.log(messages,'kkkkkkk')
   const sendMessage = () => {
     if (msg && !loading) {
       setLoading(true);
@@ -115,6 +115,56 @@ export default function Home() {
     }, 200);
   };
 
+  const handleSticker = (k: any) => {
+    console.log(k, "gg")
+
+    if (k.type === "welcome_text") {
+      return (
+        <div
+          className="massage-box recieved"
+        >
+          <div className="chat_img">
+            <img
+              src="images/massage.svg"
+              alt=""
+            />
+          </div>
+          <div className="chat_onlyImg" style={{ maxWidth: 200 }}>
+            <img src="/stickers/hi.png" alt="" style={{ width: "100%" }} />
+          </div>
+        </div>)
+    } else if (k._id === "know_more_options_no") {
+      return (
+        <div
+          className="massage-box recieved"
+        >
+          <div className="chat_img">
+            <img
+              src="images/massage.svg"
+              alt=""
+            />
+          </div>
+          <div className="chat_onlyImg" style={{ maxWidth: 200 }}>
+            <img src="/stickers/bye.png" alt="" style={{ width: "100%" }} />
+          </div>
+        </div>)
+    } else if (k._id.endsWith('_nodata_result')) {
+      return (
+        <div
+          className="massage-box recieved"
+        >
+          <div className="chat_img">
+            <img
+              src="images/massage.svg"
+              alt=""
+            />
+          </div>
+          <div className="chat_onlyImg" style={{ maxWidth: 200 }}>
+            <img src="/stickers/oops.png" alt="" style={{ width: "100%" }} />
+          </div>
+        </div>)
+    }
+  }
   return (
     <>
       <Head>
@@ -123,97 +173,100 @@ export default function Home() {
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes"
         />
       </Head>
-    
-    <div className="chat-box">
-      <div className="chat_boat customscroll">
-        <div className="chat_boat-head ">
-          <div className="chat_back-btn">
-            <img
-              src="images/left-chavron.svg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div className="chat_body">
-          {messages.map((k: any, i: number, s: any) => {
-            return k.sender === "bot" ? (
-              <div
-                className="massage-box recieved"
-                key={`message-recieved-${i}`}>
-                <div className="chat_img">
-                  <img
-                    src="images/massage.svg"
-                    alt=""
-                  />
-                </div>
-                <div className="massage">
-                  <p>{k.faqtext}</p>
 
-                  {Boolean(k.options?.length) && (
-                    <div>
-                      <ul className="guided-btns">
-                        {k.options.map((el: any, k: number) => (
-                          <li key={`op-${k}`}>
-                            {
-                              // i == s.length - 1 &&
-                              !Boolean(selectedOption.includes(el._id)) ? (
-                                <button
-                                  style={{ margin: 5 }}
-                                  onClick={() => setMessage(el)}>
-                                  {el.faqtext}
-                                </button>
-                              ) : (
-                                <button
-                                  style={{ margin: 5 }}
-                                  disabled={true}>
-                                  {el.faqtext}
-                                </button>
-                              )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <div
-                className="massage-box send"
-                key={`message-send-${i}`}>
-                <div className="massage">{k.faqtext}</div>
-              </div>
-            );
-          })}
-          {loading && (
-            <div
-              className="chat-message user2"
-              style={{ textAlign: "center" }}
-              key={`loading`}>
-              Please wait...
+      <div className="chat-box">
+        <div className="chat_boat customscroll">
+          <div className="chat_boat-head ">
+            <div className="chat_back-btn">
+              <img
+                src="images/left-chavron.svg"
+                alt=""
+              />
             </div>
-          )}
-          <div ref={scrollTop}></div>
-        </div>
-        <div className="chat_input-box">
-          <input
-            className="chat_input"
-            type="text"
-            ref={input}
-            disabled={loading}
-            onKeyDown={handleKeyDown}
-          />
-          {error && (
-            <p className="text-danger text-sm position-absolute">{error}</p>
-          )}
-          <div className="send-btn">
-            <img
-              src="images/vactor-send.svg"
-              alt=""
+          </div>
+          <div className="chat_body">
+            {messages.map((k: any, i: number, s: any) => {
+              return k.sender === "bot" ? (
+                <React.Fragment key={`message-recieved-${i}`}>
+                  {handleSticker(k)}
+                  <div
+                    className="massage-box recieved">
+                    <div className="chat_img">
+                      <img
+                        src="images/massage.svg"
+                        alt=""
+                      />
+                    </div>
+                    <div className="massage">
+                      <p>{k.faqtext}</p>
+
+                      {Boolean(k.options?.length) && (
+                        <div>
+                          <ul className="guided-btns">
+                            {k.options.map((el: any, k: number) => (
+                              <li key={`op-${k}`}>
+                                {
+                                  // i == s.length - 1 &&
+                                  !Boolean(selectedOption.includes(el._id)) ? (
+                                    <button
+                                      style={{ margin: 5 }}
+                                      onClick={() => setMessage(el)}>
+                                      {el.faqtext}
+                                    </button>
+                                  ) : (
+                                    <button
+                                      style={{ margin: 5 }}
+                                      disabled={true}>
+                                      {el.faqtext}
+                                    </button>
+                                  )}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </React.Fragment>
+
+              ) : (
+                <div
+                  className="massage-box send"
+                  key={`message-send-${i}`}>
+                  <div className="massage">{k.faqtext}</div>
+                </div>
+              );
+            })}
+            {loading && (
+              <div
+                className="chat-message user2"
+                style={{ textAlign: "center" }}
+                key={`loading`}>
+                Please wait...
+              </div>
+            )}
+            <div ref={scrollTop}></div>
+          </div>
+          <div className="chat_input-box">
+            <input
+              className="chat_input"
+              type="text"
+              ref={input}
+              disabled={loading}
+              onKeyDown={handleKeyDown}
             />
+            {error && (
+              <p className="text-danger text-sm position-absolute">{error}</p>
+            )}
+            <div className="send-btn">
+              <img
+                src="images/vactor-send.svg"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
