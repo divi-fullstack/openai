@@ -47,9 +47,8 @@ export default function Home() {
   useEffect(() => {
     socket.on("private message", ({ messages }) => {
       setMessages((prevMessages: any) => {
-        if(window.location.search){
+        if(window.location.search?.startsWith("?search=")){
           const msgs = [...prevMessages, ...messages].filter(el=>el.type !== "welcome_text")
-          console.log(msgs,'kkkd')
           return [...msgs]
         }else{
           console.log('her', search)
