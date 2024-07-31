@@ -1,3 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* fonts Variables */
+    --color-red: #850C70;
+    --color-red60: #850C7099;
+    --color-white: #fff;
+    /* viewport Variables */
+    --max-container-width: 1400px;
+    --max-container-percentage: 92%;
+    --breakpoint-large: 1500px;
+    --breakpoint-small: 921px;
+}
+body {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    color: #444;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100,
+      "YTLC" 500;
+  }
+  a,
+  button {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+  }
+  
 .body {
     background-color: antiquewhite;
     width: 100%;
@@ -12,41 +172,39 @@
 } */
 
 .chat_boat {
-    padding: 2vw;
-    background: #F6F6F6;
+    padding: 1rem;
     position: relative;
-    background: url(../public/images/chat-bg.jpg) 100% center;
+    background: url(../public/images/chat-bg.jpg) left top;
+    height: 100vh;
 }
 
 .chat_boat-head {
-    padding: 1rem 1.5rem;
+    padding: 2rem 1.5rem 1rem;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    backdrop-filter: blur(2px);
+    /* backdrop-filter: blur(2px);
     background: #f6f6f683;
-    box-shadow: 0vw 7vw 4vw 0vw #ffffff;
+    box-shadow: 0vw 7vw 4vw 0vw #ffffff; */
+    background: url(../public/images/chat-header-bg.png) no-repeat left top;
+    height: 120px;
 }
 
 .chat_back-btn {
-    width: clamp(1rem, 2.5vw, 3rem);
+    width: clamp(1.5rem, 2.5vw, 3rem);
     cursor: pointer;
-}
-
-.chat_back-btn img {
-    width: 100vw;
 }
 
 .chat_body {
     padding: 1vw 0;
-    height: 80vh;
+    height: 88vh;
     overflow-y: auto;
-    padding-top: 3rem;
+    padding-top: 5rem;
 }
 
 .massage-box {
-    padding: 1vw 0;
+    padding: .5rem 0;
     width: 80%;
     display: flex;
     align-items: center;
@@ -59,13 +217,13 @@
 }
 
 .send .massage {
-    background: var(--color-red);
+    background: #684663;
     color: var(--color-white);
 }
 
 
 .recieved {
-    width: 90%;
+    width: 93%;
     margin-right: auto;
 }
 
@@ -79,19 +237,18 @@
 }
 
 .chat_img {
-    width: clamp(3rem, 5vw, 5vw);
-    height: clamp(3rem, 5vw, 5vw);
+    width: clamp(2rem, 5vw, 5vw);
+    height: clamp(2rem, 5vw, 5vw);
     border-radius: 50%;
     background: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 .chat_img img {
-    width: 50%;
-    max-width: unset;
 }
 
 /* .massage-box.recieved:nth-child(1) {
@@ -106,7 +263,7 @@
 .chat_input {
     width: 100%;
     border-radius: 5rem;
-    border: 1px solid var(--color-red);
+    border: 1px solid var(--color-red60);
     padding: 1rem 3rem 1rem 1rem;
     outline: none;
 }
@@ -160,27 +317,33 @@
 }
 
 .guided-btns li button {
+    font-family: "Nunito Sans", sans-serif;
     padding: 8px 10px;
     background: #fff;
-    border-radius: 0.6rem;
-    color: #850C70;
-    border: 0.1vw solid #850C70;
+    border-radius: 0.75rem;
+    color:var(--color-red);
+    font-weight: 700;
+    border: .1rem solid var(--color-red);
     text-align: left;
+    margin: 5px 0 !important;
 }
 
 .recieved .massage {
-    width: calc(100% - clamp(4rem, 6vw, 6vw));
+    width: calc(100% - clamp(3rem, 6vw, 6vw));
     margin-left: auto;
 }
 
 /* .massage-box.recieved .chat_img {
     display: none;
+} */
+.massage-box.recieved+.recieved .chat_img {
+    display: none;
 }
 
 .massage-box.recieved:nth-child(1) .chat_img {
     display: flex;
-} */
+}
 
 .send .massage:nth-child(1) {
-    margin-top: 20px;
+    margin-bottom: 20px;
 }

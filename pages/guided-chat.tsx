@@ -110,9 +110,7 @@ export default function Home() {
     }, 200);
   };
  
-  return (
-    <div className="body">
-      <div className="chat-size">
+  return (   
         <div className="chat-box">
           <div className="chat_boat">
             <div className="chat_boat-head ">
@@ -202,7 +200,5 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 }
