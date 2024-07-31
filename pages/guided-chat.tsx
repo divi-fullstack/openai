@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import socket from "../lib/socket";
-import { generateRandomId } from "../lib/helper";
+import { generateRandomId, getSearchParam } from "../lib/helper";
 import "../app/globals.css";
 import "../app/chatboat.css";
 import "../app/style.css";
@@ -56,15 +56,12 @@ export default function Home() {
     });
   }, []);
 
-  useEffect(() => {
-    console.log('k1')
-    if(window?.location.search?.startsWith("?search=")){
-    console.log('k2')
-
+  useEffect(() => { 
+    if(window?.location.search?.startsWith("?search=")){ 
       setTimeout(() => {
         setMessage({
           _id: "search",
-          faqtext: "search"
+          faqtext: getSearchParam("search")
         })
       }, 2000);
     }
