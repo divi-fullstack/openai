@@ -141,7 +141,8 @@ export default function Home() {
                           <ul className="guided-btns">
                             {k.options.map((el: any, k: number) => (
                               <li key={`op-${k}`}>
-                                {i == s.length - 1 &&
+                                {
+                                // i == s.length - 1 &&
                                   !Boolean(selectedOption.includes(el._id)) ? (
                                   <button
                                     style={{ margin: 5 }}
