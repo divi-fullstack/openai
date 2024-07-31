@@ -6,7 +6,11 @@ import "../app/globals.css";
 import "../app/chatboat.css";
 import "../app/style.css";
 import "../app/responsive.css";
+import { useSearchParams } from 'next/navigation'
+
 export default function Home() {
+  const searchParams: any = useSearchParams()
+  const search = searchParams.get('search')
   const [username, setUsername] = useState(generateRandomId(12));
   const [msg, setMsg]: any = useState(null);
   const [messages, setMessages]: any = useState([]);
@@ -42,11 +46,31 @@ export default function Home() {
 
   useEffect(() => {
     socket.on("private message", ({ messages }) => {
-      setMessages((prevMessages: any) => [...prevMessages, ...messages]);
+      setMessages((prevMessages: any) => {
+        if(window.location.search){
+          const msgs = [...prevMessages, ...messages].filter(el=>el.type !== "welcome_text")
+          console.log(msgs,'kkkd')
+          return [...msgs]
+        }else{
+          console.log('her', search)
+          return [...prevMessages, ...messages]
+        }
+      });
       setLoading(false);
       scV();
     });
   }, []);
+
+  useEffect(() => {
+    if(search){
+      setTimeout(() => {
+        setMessage({
+          _id: "search",
+          faqtext: search
+        })
+      }, 500);
+    }
+  }, [search])
 
   const handleRegister = () => {
     socket.emit("register", username);
@@ -72,7 +96,7 @@ export default function Home() {
         setMessage({
           _id: "search",
           faqtext: input.current.value
-        }) 
+        })
       }
       input.current.value = "";
     } else {
@@ -90,6 +114,8 @@ export default function Home() {
       input.current.focus();
     }, 200);
   };
+
+  console.log(search, 'params')
   return (
     <div className="body">
       <div className="chat-size">
