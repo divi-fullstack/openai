@@ -6,6 +6,7 @@ import "../app/globals.css";
 import "../app/chatboat.css";
 import "../app/style.css";
 import "../app/responsive.css";
+import Head from "next/head";
 
 export default function Home() {
   const [username, setUsername] = useState(generateRandomId(12));
@@ -115,8 +116,16 @@ export default function Home() {
   };
 
   return (
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes"
+        />
+      </Head>
+    
     <div className="chat-box">
-      <div className="chat_boat">
+      <div className="chat_boat customscroll">
         <div className="chat_boat-head ">
           <div className="chat_back-btn">
             <img
@@ -205,5 +214,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </>
   );
 }

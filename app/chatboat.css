@@ -141,6 +141,7 @@ table {
     --breakpoint-large: 1500px;
     --breakpoint-small: 921px;
 }
+
 body {
     font-family: "Nunito Sans", sans-serif;
     font-optical-sizing: auto;
@@ -148,39 +149,29 @@ body {
     color: #444;
     font-style: normal;
     font-variation-settings:
-      "wdth" 100,
-      "YTLC" 500;
-  }
-  a,
-  button {
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-  }
-  
-.body {
-    background-color: antiquewhite;
-    width: 100%;
-    min-height: 100vh;
-    padding: 5vw;
+        "wdth" 100,
+        "YTLC" 500;
 }
 
-/* .chat-size {
-    width: 40%;
-    margin: 0 auto;
-    background: #fff;
-} */
+a,
+button {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
 
 .chat_boat {
     padding: 1rem;
     position: relative;
     background: url(/images/chat-bg.jpg) left top;
     height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .chat_boat-head {
     padding: 2rem 1.5rem 1rem;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -198,9 +189,9 @@ body {
 
 .chat_body {
     padding: 1vw 0;
-    height: 88vh;
     overflow-y: auto;
     padding-top: 5rem;
+    padding-bottom: 4rem;
 }
 
 .massage-box {
@@ -248,16 +239,25 @@ body {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
-.chat_img img {
-}
+.chat_img img {}
 
 /* .massage-box.recieved:nth-child(1) {
     display: block;
 } */
+.chat_input-box-container {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0;
+    background: url(/images/chat-bg.jpg) left top;
+    padding-bottom: 1rem;
+
+}
 
 .chat_input-box {
     width: 100%;
     position: relative;
+
 }
 
 .chat_input {
@@ -282,20 +282,20 @@ body {
     width: 30%;
 }
 
-.chat_body::-webkit-scrollbar {
+.customscroll::-webkit-scrollbar {
     width: 10px;
     display: none;
     /* or any desired width */
 }
 
 /* Track (background) of the scrollbar */
-.chat_body::-webkit-scrollbar-track {
+.customscroll::-webkit-scrollbar-track {
     background: #f1f1f1;
     /* or any desired color */
 }
 
 /* Thumb (the draggable part) of the scrollbar */
-.chat_body::-webkit-scrollbar-thumb {
+.customscroll::-webkit-scrollbar-thumb {
     background: #888;
     /* or any desired color */
     border-radius: 5px;
@@ -303,7 +303,7 @@ body {
 }
 
 /* Thumb on hover */
-.chat_body::-webkit-scrollbar-thumb:hover {
+.customscroll::-webkit-scrollbar-thumb:hover {
     background: #555;
     /* or any desired color on hover */
 }
@@ -321,7 +321,7 @@ body {
     padding: 8px 10px;
     background: #fff;
     border-radius: 0.75rem;
-    color:var(--color-red);
+    color: var(--color-red);
     font-weight: 700;
     border: .1rem solid var(--color-red);
     text-align: left;
