@@ -27,9 +27,9 @@ export default function Home() {
       setLoading(true);
       scV();
       const nr = [...messages, msg];
-      if (!Boolean(msg?._id === "yes" || msg?._id === "no")) {
-        setSelectedOption((s: any) => [...s, msg._id]);
-      }
+      // if (!Boolean(msg?._id === "yes" || msg?._id === "no")) {
+      //   setSelectedOption((s: any) => [...s, msg._id]);
+      // }
       setMessages([...nr]);
       socket.emit("private message", { message: msg });
       setMsg(null);
@@ -69,7 +69,10 @@ export default function Home() {
       } else if (y) {
         setMessage(y);
       } else {
-        setError("The selection is invalid.");
+        setMessage({
+          _id: "search",
+          faqtext: input.current.value
+        }) 
       }
       input.current.value = "";
     } else {
@@ -121,7 +124,7 @@ export default function Home() {
                             {k.options.map((el: any, k: number) => (
                               <li key={`op-${k}`}>
                                 {i == s.length - 1 &&
-                                !Boolean(selectedOption.includes(el._id)) ? (
+                                  !Boolean(selectedOption.includes(el._id)) ? (
                                   <button
                                     style={{ margin: 5 }}
                                     onClick={() => setMessage(el)}>
