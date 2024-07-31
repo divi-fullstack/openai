@@ -5,12 +5,9 @@ import { generateRandomId } from "../lib/helper";
 import "../app/globals.css";
 import "../app/chatboat.css";
 import "../app/style.css";
-import "../app/responsive.css";
-import { useSearchParams } from 'next/navigation'
+import "../app/responsive.css"; 
 
-export default function Home() {
-  const searchParams: any = useSearchParams()
-  const search = searchParams.get('search')
+export default function Home() {  
   const [username, setUsername] = useState(generateRandomId(12));
   const [msg, setMsg]: any = useState(null);
   const [messages, setMessages]: any = useState([]);
@@ -50,8 +47,7 @@ export default function Home() {
         if(window.location.search?.startsWith("?search=")){
           const msgs = [...prevMessages, ...messages].filter(el=>el.type !== "welcome_text")
           return [...msgs]
-        }else{
-          console.log('her', search)
+        }else{ 
           return [...prevMessages, ...messages]
         }
       });
@@ -61,15 +57,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if(search){
+    console.log('k1')
+    if(window?.location.search?.startsWith("?search=")){
+    console.log('k2')
+
       setTimeout(() => {
         setMessage({
           _id: "search",
-          faqtext: search
+          faqtext: "search"
         })
-      }, 500);
+      }, 2000);
     }
-  }, [search])
+  }, [socket])
 
   const handleRegister = () => {
     socket.emit("register", username);
@@ -113,8 +112,7 @@ export default function Home() {
       input.current.focus();
     }, 200);
   };
-
-  console.log(search, 'params')
+ 
   return (
     <div className="body">
       <div className="chat-size">
