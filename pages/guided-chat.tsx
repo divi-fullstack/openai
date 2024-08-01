@@ -27,7 +27,7 @@ export default function Home() {
     setMsg(m);
     // console.log(m, 'ssssss')
   };
-console.log(messages,'kkkkkkk')
+  console.log(messages, 'kkkkkkk')
   const sendMessage = () => {
     if (msg && !loading) {
       setLoading(true);
@@ -115,7 +115,7 @@ console.log(messages,'kkkkkkk')
     }, 200);
   };
 
-  const handleSticker = (k: any) => { 
+  const handleSticker = (k: any) => {
 
     if (k.type === "welcome_text") {
       return (
@@ -166,15 +166,15 @@ console.log(messages,'kkkkkkk')
   }
   return (
     <>
-     <img src="/stickers/bye.png" hidden={true} />
-     <img src="/stickers/great_question.png" hidden={true} />
-     <img src="/stickers/happy_home_buying.png" hidden={true} />
-     <img src="/stickers/here_you_go.png" hidden={true} />
-     <img src="/stickers/hi.png" hidden={true} />
-     <img src="/stickers/hope_that_helped.png" hidden={true} />
-     <img src="/stickers/let_me_think.png" hidden={true} />
-     <img src="/stickers/oops.png" hidden={true} />
-     <img src="/stickers/wait.png" hidden={true} />
+      <img src="/stickers/bye.png" hidden={true} />
+      <img src="/stickers/great_question.png" hidden={true} />
+      <img src="/stickers/happy_home_buying.png" hidden={true} />
+      <img src="/stickers/here_you_go.png" hidden={true} />
+      <img src="/stickers/hi.png" hidden={true} />
+      <img src="/stickers/hope_that_helped.png" hidden={true} />
+      <img src="/stickers/let_me_think.png" hidden={true} />
+      <img src="/stickers/oops.png" hidden={true} />
+      <img src="/stickers/wait.png" hidden={true} />
 
       <Head>
         <meta
@@ -208,7 +208,7 @@ console.log(messages,'kkkkkkk')
                     </div>
                     <div className="massage">
                       <p>{k.faqtext}</p>
-
+                      {k.prevFaqdesc1 ? <p>{k.prevFaqdesc1}</p> : ""}
                       {Boolean(k.options?.length) && (
                         <div>
                           <ul className="guided-btns">
@@ -257,24 +257,24 @@ console.log(messages,'kkkkkkk')
             <div ref={scrollTop}></div>
           </div>
           <div className="chat_input-box-container">
-          <div className="chat_input-box">
-            <input
-              className="chat_input"
-              type="text"
-              ref={input}
-              disabled={loading}
-              onKeyDown={handleKeyDown}
-            />
-            {error && (
-              <p className="text-danger text-sm position-absolute">{error}</p>
-            )}
-            <div className="send-btn">
-              <img
-                src="images/vactor-send.svg"
-                alt=""
+            <div className="chat_input-box">
+              <input
+                className="chat_input"
+                type="text"
+                ref={input}
+                disabled={loading}
+                onKeyDown={handleKeyDown}
               />
+              {error && (
+                <p className="text-danger text-sm position-absolute">{error}</p>
+              )}
+              <div className="send-btn">
+                <img
+                  src="images/vactor-send.svg"
+                  alt=""
+                />
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
