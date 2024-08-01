@@ -1,86 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html
+{
     margin: 0;
     padding: 0;
     border: 0;
@@ -128,6 +49,9 @@ table {
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 :root {
@@ -145,6 +69,7 @@ table {
 body {
     font-family: "Nunito Sans", sans-serif;
     font-optical-sizing: auto;
+    font-size: 1rem;
     font-weight: 600;
     color: #444;
     font-style: normal;
@@ -238,11 +163,6 @@ button {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
-.chat_img img {}
-
-/* .massage-box.recieved:nth-child(1) {
-    display: block;
-} */
 .chat_input-box-container {
     padding: 0 1rem 1rem 1rem;
     position: fixed;
@@ -318,6 +238,7 @@ button {
 
 .guided-btns li button {
     font-family: "Nunito Sans", sans-serif;
+    font-size: .775rem;
     padding: 8px 10px;
     background: #fff;
     border-radius: 0.75rem;
@@ -346,4 +267,11 @@ button {
 
 .send .massage:nth-child(1) {
     margin-bottom: 20px;
+}
+
+
+@media (max-width:920px) {
+    html {
+        font-size: 120%;
+    }
 }
