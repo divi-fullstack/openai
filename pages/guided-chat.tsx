@@ -115,8 +115,7 @@ console.log(messages,'kkkkkkk')
     }, 200);
   };
 
-  const handleSticker = (k: any) => {
-    console.log(k, "gg")
+  const handleSticker = (k: any) => { 
 
     if (k.type === "welcome_text") {
       return (
@@ -129,8 +128,8 @@ console.log(messages,'kkkkkkk')
               alt=""
             />
           </div>
-          <div className="chat_onlyImg" style={{ maxWidth: 200 }}>
-            <img src="/stickers/hi.png" alt="" style={{ width: "100%" }} />
+          <div className="chat_onlyImg">
+            <img src="/stickers/hi.png" alt="" style={{ width: "100px" }} />
           </div>
         </div>)
     } else if (k._id === "know_more_options_no") {
@@ -144,8 +143,8 @@ console.log(messages,'kkkkkkk')
               alt=""
             />
           </div>
-          <div className="chat_onlyImg" style={{ maxWidth: 200 }}>
-            <img src="/stickers/bye.png" alt="" style={{ width: "100%" }} />
+          <div className="chat_onlyImg">
+            <img src="/stickers/bye.png" alt="" style={{ width: "100px" }} />
           </div>
         </div>)
     } else if (k._id.endsWith('_nodata_result')) {
@@ -159,8 +158,8 @@ console.log(messages,'kkkkkkk')
               alt=""
             />
           </div>
-          <div className="chat_onlyImg" style={{ maxWidth: 200 }}>
-            <img src="/stickers/oops.png" alt="" style={{ width: "100%" }} />
+          <div className="chat_onlyImg">
+            <img src="/stickers/oops.png" alt="" style={{ width: "100px" }} />
           </div>
         </div>)
     }
@@ -185,7 +184,7 @@ console.log(messages,'kkkkkkk')
       </Head>
 
       <div className="chat-box">
-        <div className="chat_boat customscroll">
+        <div className="chat_boat">
           <div className="chat_boat-head ">
             <div className="chat_back-btn">
               <img
@@ -194,7 +193,7 @@ console.log(messages,'kkkkkkk')
               />
             </div>
           </div>
-          <div className="chat_body">
+          <div className="chat_body customscroll">
             {messages.map((k: any, i: number, s: any) => {
               return k.sender === "bot" ? (
                 <React.Fragment key={`message-recieved-${i}`}>
@@ -257,6 +256,7 @@ console.log(messages,'kkkkkkk')
             )}
             <div ref={scrollTop}></div>
           </div>
+          <div className="chat_input-box-container">
           <div className="chat_input-box">
             <input
               className="chat_input"
@@ -274,6 +274,7 @@ console.log(messages,'kkkkkkk')
                 alt=""
               />
             </div>
+          </div>
           </div>
         </div>
       </div>

@@ -164,9 +164,6 @@ button {
     padding: 1rem;
     position: relative;
     background: url(/images/chat-bg.jpg) left top;
-    height: 100vh;
-    overflow: hidden;
-    overflow-y: scroll;
 }
 
 .chat_boat-head {
@@ -180,6 +177,7 @@ button {
     box-shadow: 0vw 7vw 4vw 0vw #ffffff; */
     background: url(/images/chat-header-bg.png) no-repeat left top;
     height: 120px;
+    z-index: 9;
 }
 
 .chat_back-btn {
@@ -192,6 +190,7 @@ button {
     overflow-y: auto;
     padding-top: 5rem;
     padding-bottom: 4rem;
+    height: 90vh;
 }
 
 .massage-box {
@@ -245,12 +244,12 @@ button {
     display: block;
 } */
 .chat_input-box-container {
+    padding: 0 1rem 1rem 1rem;
     position: fixed;
-    left: 1rem;
-    right: 1rem;
+    left: 0;
+    right: 0;
     bottom: 0;
     background: url(/images/chat-bg.jpg) left top;
-    padding-bottom: 1rem;
 
 }
 
@@ -279,7 +278,8 @@ button {
 }
 
 .chat_onlyImg {
-    width: 30%;
+    width: calc(100% - clamp(3rem, 6vw, 6vw));
+    margin-left: auto;
 }
 
 .customscroll::-webkit-scrollbar {
