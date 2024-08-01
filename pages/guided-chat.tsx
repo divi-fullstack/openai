@@ -207,8 +207,8 @@ export default function Home() {
                       />
                     </div>
                     <div className="massage">
+                      {k.prevFaqdesc ? <p>{k.prevFaqdesc}</p> : ""}
                       <p>{k.faqtext}</p>
-                      {k.prevFaqdesc1 ? <p>{k.prevFaqdesc1}</p> : ""}
                       {Boolean(k.options?.length) && (
                         <div>
                           <ul className="guided-btns">
