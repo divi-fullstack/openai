@@ -81,7 +81,10 @@ export default function Home() {
   }, [username]);
 
   const handleKeyDown = (e: any) => {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e === "submit") {
+      if(!input.current.value){
+        return
+      }
       const y = messages[messages.length - 1]?.options?.find(
         (l: any) =>
           l.faqtext.toLowerCase() === input.current.value.toLowerCase()
@@ -268,7 +271,7 @@ export default function Home() {
               {error && (
                 <p className="text-danger text-sm position-absolute">{error}</p>
               )}
-              <div className="send-btn">
+              <div className="send-btn" onClick={()=>handleKeyDown("submit")}>
                 <img
                   src="images/vactor-send.svg"
                   alt=""
