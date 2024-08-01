@@ -115,7 +115,7 @@ export default function Home() {
         inline: "nearest",
       });
       input.current.focus();
-    }, 200);
+    }, 1000);
   };
 
   const handleSticker = (k: any) => {
