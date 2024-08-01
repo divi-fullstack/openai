@@ -128,7 +128,7 @@ export default function Home() {
         block: "end",
         inline: "nearest",
       });
-      input.current.focus();
+      // input.current.focus();
     }, 1000);
   };
 
