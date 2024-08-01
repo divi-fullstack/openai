@@ -11,12 +11,26 @@ import Head from "next/head";
 export default function Home() {
   const [username, setUsername] = useState(generateRandomId(12));
   const [msg, setMsg]: any = useState(null);
+  const [height, setHeight] = useState(0);
   const [messages, setMessages]: any = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedOption, setSelectedOption]: any = useState([]);
   const [error, setError] = useState("");
   const scrollTop: any = useRef();
   const input: any = useRef();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setHeight(window.innerHeight * 0.9);
+      const handleResize = () => {
+        setHeight(window.innerHeight * 0.9);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
 
   const setMessage = (m: any) => {
     setError("");
@@ -196,7 +210,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="chat_body customscroll">
+          <div className="chat_body customscroll" style={{ height: `${height}px` }}>
             {messages.map((k: any, i: number, s: any) => {
               return k.sender === "bot" ? (
                 <React.Fragment key={`message-recieved-${i}`}>
@@ -257,7 +271,7 @@ export default function Home() {
                 Please wait...
               </div>
             )}
-            <div ref={scrollTop}></div>
+            <div ref={scrollTop} className="refer_div"></div>
           </div>
           <div className="chat_input-box-container">
             <div className="chat_input-box">

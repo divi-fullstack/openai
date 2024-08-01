@@ -69,7 +69,7 @@ table {
 body {
     font-family: "Nunito Sans", sans-serif;
     font-optical-sizing: auto;
-    font-size: 1rem;
+    font-size: .875rem;
     font-weight: 600;
     color: #444;
     font-style: normal;
@@ -274,4 +274,6 @@ button {
     html {
         font-size: 120%;
     }
+
+    .refer_div {height: 60px;}
 }
