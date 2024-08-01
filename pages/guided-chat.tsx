@@ -125,7 +125,7 @@ export default function Home() {
     setTimeout(() => {
       scrollTop.current?.scrollIntoView({
         behavior: "smooth",
-        block: "end",
+        block: "center",
         inline: "nearest",
       });
       // input.current.focus();
@@ -214,6 +214,7 @@ export default function Home() {
             {messages.map((k: any, i: number, s: any) => {
               return k.sender === "bot" ? (
                 <React.Fragment key={`message-recieved-${i}`}>
+                  {((s.length - 1) === i) ? <div ref={scrollTop}></div> : ""}
                   {handleSticker(k)}
                   <div
                     className="massage-box recieved">
@@ -271,7 +272,7 @@ export default function Home() {
                 Please wait...
               </div>
             )}
-            <div ref={scrollTop} className="refer_div"></div>
+            {/* <div ref={scrollTop} className="refer_div"></div> */}
           </div>
           <div className="chat_input-box-container">
             <div className="chat_input-box">
