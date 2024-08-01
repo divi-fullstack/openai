@@ -129,7 +129,7 @@ export default function Home() {
         inline: "nearest",
       });
       // input.current.focus();
-    }, 1000);
+    }, 500);
   };
 
   const handleSticker = (k: any) => {
