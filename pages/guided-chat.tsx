@@ -70,12 +70,12 @@ export default function Home() {
   useEffect(() => {
     socket.on("private message", ({ messages }) => {
       setMessages((prevMessages: any) => {
-        if (window.location.search?.startsWith("?search=") || window?.location.search?.startsWith("?find=")) {
-          const msgs = [...prevMessages, ...messages].filter(el => el.type !== "welcome_text")
-          return [...msgs]
-        } else {
-          return [...prevMessages, ...messages]
-        }
+        // if ((window.location.search?.startsWith("?search=") || window?.location.search?.startsWith("?find=")) && prevMessages.length === 2) {
+        //   const msgs = [...prevMessages, ...messages].filter(el => el.type !== "welcome_text")
+        //   return [...msgs]
+        // } else {
+        return [...prevMessages, ...messages]
+        // }
       });
       setLoading(false);
       scV();
@@ -90,7 +90,7 @@ export default function Home() {
           faqtext: getSearchParam("search")
         })
       }, 2000);
-    }else if (window?.location.search?.startsWith("?find=")) {
+    } else if (window?.location.search?.startsWith("?find=")) {
       setTimeout(() => {
         setMessage({
           _id: "find",
@@ -226,6 +226,9 @@ export default function Home() {
           </div>
           <div className="chat_body customscroll" style={{ height: `${height}px` }}>
             {messages.map((k: any, i: number, s: any) => {
+              if (i === 0 && (window.location.search?.startsWith("?search=") || window?.location.search?.startsWith("?find="))) {
+                return null
+              }
               return k.sender === "bot" ? (
                 <React.Fragment key={`message-recieved-${i}`}>
                   {(getLastSendMessageId() === k?._id) ? <div ref={scrollTop} style={{ position: "relative", top: -80 }}></div> : ""}
