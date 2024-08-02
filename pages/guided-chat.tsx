@@ -70,7 +70,7 @@ export default function Home() {
   useEffect(() => {
     socket.on("private message", ({ messages }) => {
       setMessages((prevMessages: any) => {
-        if (window.location.search?.startsWith("?search=")) {
+        if (window.location.search?.startsWith("?search=") || window?.location.search?.startsWith("?find=")) {
           const msgs = [...prevMessages, ...messages].filter(el => el.type !== "welcome_text")
           return [...msgs]
         } else {
