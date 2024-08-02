@@ -90,6 +90,13 @@ export default function Home() {
           faqtext: getSearchParam("search")
         })
       }, 2000);
+    }else if (window?.location.search?.startsWith("?find=")) {
+      setTimeout(() => {
+        setMessage({
+          _id: "find",
+          faqtext: getSearchParam("find")
+        })
+      }, 2000);
     }
   }, [socket])
 
