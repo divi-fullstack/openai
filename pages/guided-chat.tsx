@@ -214,7 +214,7 @@ export default function Home() {
             {messages.map((k: any, i: number, s: any) => {
               return k.sender === "bot" ? (
                 <React.Fragment key={`message-recieved-${i}`}>
-                  {((s.length - 1) === i) ? <div ref={scrollTop}></div> : ""}
+                  {((s.length - 1) === i) ? <div ref={scrollTop} style={{position:"relative", top:-80}}></div> : ""}
                   {handleSticker(k)}
                   <div
                     className="massage-box recieved">
