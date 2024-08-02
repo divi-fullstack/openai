@@ -125,7 +125,7 @@ export default function Home() {
     setTimeout(() => {
       scrollTop.current?.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "start",
         inline: "nearest",
       });
       // input.current.focus();
