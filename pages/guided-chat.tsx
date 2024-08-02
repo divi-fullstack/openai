@@ -60,6 +60,13 @@ export default function Home() {
     sendMessage();
   }, [msg]);
 
+  const getLastSendMessageId = () => {
+    const sm = messages?.filter((el: any) => el.sender === "user")
+    const lsm = sm.pop()
+    return lsm?._id || null
+  }
+
+
   useEffect(() => {
     socket.on("private message", ({ messages }) => {
       setMessages((prevMessages: any) => {
@@ -96,7 +103,7 @@ export default function Home() {
 
   const handleKeyDown = (e: any) => {
     if (e.keyCode === 13 || e === "submit") {
-      if(!input.current.value){
+      if (!input.current.value) {
         return
       }
       const y = messages[messages.length - 1]?.options?.find(
@@ -214,7 +221,7 @@ export default function Home() {
             {messages.map((k: any, i: number, s: any) => {
               return k.sender === "bot" ? (
                 <React.Fragment key={`message-recieved-${i}`}>
-                  {((s.length - 1) === i) ? <div ref={scrollTop} style={{position:"relative", top:-180}}></div> : ""}
+                  {(getLastSendMessageId() === k?._id) ? <div ref={scrollTop} style={{ position: "relative", top: -80 }}></div> : ""}
                   {handleSticker(k)}
                   <div
                     className="massage-box recieved">
@@ -257,11 +264,15 @@ export default function Home() {
                 </React.Fragment>
 
               ) : (
-                <div
-                  className="massage-box send"
-                  key={`message-send-${i}`}>
-                  <div className="massage">{k.faqtext}</div>
-                </div>
+                <React.Fragment>
+                  {(getLastSendMessageId() === k?._id) ? <div ref={scrollTop} style={{ position: "relative", top: -80 }}></div> : ""}
+
+                  <div
+                    className="massage-box send"
+                    key={`message-send-${i}`}>
+                    <div className="massage">{k.faqtext}</div>
+                  </div>
+                </React.Fragment>
               );
             })}
             {loading && (
@@ -286,7 +297,7 @@ export default function Home() {
               {error && (
                 <p className="text-danger text-sm position-absolute">{error}</p>
               )}
-              <div className="send-btn" onClick={()=>handleKeyDown("submit")}>
+              <div className="send-btn" onClick={() => handleKeyDown("submit")}>
                 <img
                   src="images/vactor-send.svg"
                   alt=""
