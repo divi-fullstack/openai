@@ -232,8 +232,8 @@ export default function Home() {
                       />
                     </div>
                     <div className="massage">
-                      {k.prevFaqdesc ? <p>{k.prevFaqdesc}</p> : ""}
-                      <p>{k.faqtext}</p>
+                      {k.prevFaqdesc ? <div dangerouslySetInnerHTML={{ __html: k.prevFaqdesc }}></div> : ""}
+                      <div dangerouslySetInnerHTML={{ __html: k.faqtext }}></div>
                       {Boolean(k.options?.length) && (
                         <div>
                           <ul className="guided-btns">
@@ -270,7 +270,7 @@ export default function Home() {
                   <div
                     className="massage-box send"
                     key={`message-send-${i}`}>
-                    <div className="massage">{k.faqtext}</div>
+                    <div className="massage" dangerouslySetInnerHTML={{ __html: k.faqtext }}></div>
                   </div>
                 </React.Fragment>
               );
